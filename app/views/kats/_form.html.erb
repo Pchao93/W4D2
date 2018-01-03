@@ -1,0 +1,55 @@
+<% if action == :new %>
+  <% action_url = kats_url %>
+<% else %>
+  <% action_url = kat_url %>
+<% end %>
+
+
+<form action="<%=action_url%>" method="post">
+  <% if action == :edit %>
+    <input type="hidden" name="_method" value="PATCH">
+  <% end %>
+
+  Name
+  <br>
+  <input type="text" name="kat[name]" value="<%= kat.name %>"><br>
+
+  Sex
+  <br>
+  <input type="radio" name="kat[sex]" value="M"
+    <%= "checked" if kat.sex == 'M' %> >
+  Male
+  <br>
+  <input type="radio" name="kat[sex]" value="F"
+    <%= "checked" if kat.sex == 'F' %> >
+  Female
+  <br>
+
+  Color
+  <br>
+  <select name="kat[color]">
+
+    <option selected disabled> pick a color </option>
+
+    <% kat.colors.each do |color| %>
+      <option value="<%= color %>"
+        <%= "selected" if kat.color == color %> >
+        <%= color %>
+      </option>
+    <% end %>
+
+  </select>
+  <br>
+  Birth Date
+  <br>
+  <input type ="date" name = "kat[birth_date]"
+    value="<%= kat.birth_date %>">
+  <br>
+
+  Description
+  <br>
+  <textarea name="kat[description]"><%= kat.description %></textarea>
+  <br>
+
+  <input type="submit">
+</form>

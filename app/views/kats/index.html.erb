@@ -1,0 +1,23 @@
+<h1>
+  Meet all the cats!
+</h1>
+<table>
+<tr>
+  <td>
+    name
+  </td>
+  <td>
+    age
+  </td>
+  <td>
+    color
+  </td>
+  <td>
+    sex
+  </td>
+</tr>
+
+<% @kats.each do |kat| %>
+  <%= render 'kat', kat: kat %>
+<% end  %>
+</table>
